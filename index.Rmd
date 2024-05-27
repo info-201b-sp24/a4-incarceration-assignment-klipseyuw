@@ -5,67 +5,64 @@ output: html_document
 
 ### Introduction
 
-An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+I will be analyzing the racial population data of prisoners. This is because there seems to be a great discrepancy between colored prisoners and white prisoners. Understanding how significant these differences are can massive help in understanding the racial prejudices that exist in our society.
 
 ### Summary Information
 
+The average amount of colored prisoners in 2018 was 124 while the average amount of white prisoners was 117 while the average amount in 1970 was 0. I assume that the recording of racial data further in the past was not done properly or wasn't a statistic at the time. The counties with lowest population for prisoners were 5 prisons being Traverse, Stevens, Big Stone, Lyon and Caldwell which had 0 prisoners. On the opposite end, the county with the highest was Los Angeles.
 Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as: 
-
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
-
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
 
 ### The Dataset
 
 Who collected the data?  
+
+- The US Bureau of Justice Statistics
+
 How was the data collected or generated?  
+
+- This data was compiled and generated throughout the years from official records
+
 Why was the data collected?  
+
+- This data was collected to look for trends in jail populations for race and gender while also looking at the prison populations compared with their urban/rural data.
+
 How many observations (rows) are in your data?  
+
+- 153811 observations
+
 How many features (columns) are in the data?  
+
+- 28 features
+
 What, if any, ethical questions or questions of power do you need to consider when working with this data?  
+
+- This data can potentially harm stereotypes about certain populations depending on how it's presented. If this data is unfairly used to compare racial data or manipulated in a way that misinforms the general population it can create a culture which further reinforces what people think about someone based on their traits from birth.
+
 What are possible limitations or problems with this data?   (at least 200 words)
+
+- This data doesn't seem to be as complete as it should be. Although it begins recording data in 1970, for whatever reason, nearly all racial data is left unfilled for several years if not 10+ years. I assume this is because they were only recording specific racial data in the past or only sex based data and it ended up being grouped into this one data set. If instead this data was separated to only show racial data and another data set was created for the other columns I think it could show case a more accurate representation of racial data overall. I believe that due to this issue, the averages of racial data may be heavily skewed to 0's or to larger numbers for when there is null data. This data set for example has an average incarceration rate for black individuals as much lower than white individuals despite the fact that there have been many protests and informative data analysis done to show that black incarceration rates are higher in each state than white individuals. This data set is also missing data that could show information about the average sentence for different races and the reason they were imprisoned. Without all this information, we are just left with a small piece of a much more complex puzzle.
 
 
 ### Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
-```
-
+This chart was made to showcase the average population of jails from 1999 to 2018. This is then separated into colored, each race considered colored and white races to show how it has changed overtime. So far, colored individuals account for a larger percentage of the population in jail than whiten individuals but it does show that white races ALONE account for the largest population between incarcerated races.
+````{r, echo = FALSE, message = FALSE}
+source("chart1.R")
+plot(trends_overtime)
+````
 ### Variable Comparison Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+This chart was made to showcase how the average population of colored prisoners has increased / decreased from 1999 to 2018. Instead of it being a comparison between races I wanted to see how colored individual populations in prison have increased over the years. It is somewhat clear that is increased at some point around 2010 but as time has gone on, the amount of colored prisoners seems to have lowered. This could potentially be because of racial injustice protests but there isn't enough information to conclude that.
+````{r, echo = FALSE, message = FALSE}
+source("chart2.R")
+plot(population_overtime)
+````
 
 ### Map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
+I chose this map because I wanted to see what the spread of incarceration for colored individuals was like across every state. From what I can observe, the closer a state is to the shoreline, the higher the amount of colored people in prison. This cannot conclude that these states are discriminatory towards colored people but could imply that there is either a higher general population of colored individuals in that particular location or a higher population in general. Nothing can be concluded from that implication though.
+````{r, echo = FALSE, message = FALSE}
+source("map.R")
+plot(population_map)
+````
 
